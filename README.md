@@ -9,7 +9,7 @@ The code is very old and has not been tested for a long time. So better just don
 
 Installation
 ============
-Install the package with `composer require scavix/wdf-minify`
+Install the package with `composer require {{name}}`.
 
 Configuration
 =============

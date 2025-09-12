@@ -303,7 +303,7 @@ function minify_css($paths,$target_file,$nc_argument=false)
 		}
         $results[$f] = "ok";
 	}
-	foreach( array('0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f') as $c )
+	foreach(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'] as $c )
 		$code = str_ireplace("#$c$c$c$c$c$c", "#$c$c$c", $code);
 	file_put_contents($target_file, $code);
     return $results;
@@ -415,8 +415,7 @@ function minify_collect_from_file($kind,$f,$classname='')
 
 //    log_debug("Collecting from $f");
 
-	$order = array('static','inherited','instanciated','self');
-		//:array('self','incontent','instanciated','inherited');
+	$order = ['static', 'inherited', 'instanciated', 'self'];
 
 	$res_file_storage[$classname] = [];
 	$content = file_get_contents($f);

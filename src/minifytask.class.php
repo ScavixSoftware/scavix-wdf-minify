@@ -30,10 +30,10 @@ class MinifyTask extends Task
     {
         log_warn("Syntax: minify-(all|js|css) <base-url> [<minify:(1|y|yes|0|n|no)> [<randomnc:(1|y|yes|0|n|no)>]]");
     }
-    
+
     private $paths = false, $base_name=false, $minify=true, $randomnc=false, $base_url=false;
     public $Results = ['js'=>[],'css'=>[]];
-    
+
     private function prepare($args=[])
     {
         if( !$this->base_url )
@@ -54,7 +54,7 @@ class MinifyTask extends Task
 
             log_debug("Base URL:",$GLOBALS['CONFIG']['system']['url_root']);
         }
-        
+
         if( count($args) )
         {
             list($m) = $this->mapCliArgs($args,false,1);
@@ -75,7 +75,7 @@ class MinifyTask extends Task
         if( !$this->paths )
         {
             global $CONFIG;
-            $parts = array_diff($CONFIG['class_path']['order'], array('system','model','content'));
+            $parts = array_diff($CONFIG['class_path']['order'], ['system', 'model', 'content']);
             $paths = [];
             foreach( $parts as $part )
                 $paths = array_merge ($paths,$CONFIG['class_path'][$part]);
@@ -104,14 +104,14 @@ class MinifyTask extends Task
             $this->base_name .= ".".preg_replace('/[^\d]*/', "", $nc);
         }
     }
-    
+
     function All($args)
     {
         $this->prepare($args);
         $this->Js([]);
         $this->Css([]);
     }
-    
+
     function Js($args)
     {
 		$this->prepare($args);
@@ -119,7 +119,7 @@ class MinifyTask extends Task
         $this->Results['js'] = minify_js($this->paths, "{$this->base_name}.js");
         log_info(__METHOD__,"Processed these files:",$this->Results['js']);
     }
-    
+
     function Css($args)
     {
 		$this->prepare($args);
