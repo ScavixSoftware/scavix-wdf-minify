@@ -31,14 +31,14 @@ use ScavixWDF\Controls\Form\Form;
 
 /**
  * SysAdmin module to manage minified JS/CSS.
- * 
+ *
  * @attribute[NoMinify]
  */
 class MinifyAdmin extends SysAdmin
 {
 	/**
      * @internal Starts the minify process.
-     * 
+     *
 	 * @attribute[RequestParam('submitter','bool',false)]
 	 * @attribute[RequestParam('skip_minify','bool',false)]
 	 * @attribute[RequestParam('random_nc','bool',false)]
@@ -61,14 +61,14 @@ class MinifyAdmin extends SysAdmin
 			$form->AddSubmit('Go');
 			return;
 		}
-		
+
 		$this->content("<h1>Minify DONE</h1>");
-        system_load_module('modules/cli.php');
-        
+        system_load_module('essentials/cli.php');
+
         $task = \ScavixWDF\Tasks\MinifyTask::Make();
-        
+
         $task->All([$GLOBALS['CONFIG']['system']['url_root'],$skip_minify?'n':false,$random_nc?'y':false]);
-        
+
         $this->content("<pre>". var_export($task->Results,true)."</pre>");
 	}
 }
