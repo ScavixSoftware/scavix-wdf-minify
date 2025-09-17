@@ -9,7 +9,7 @@ The code is very old and has not been tested for a long time. So better just don
 
 Installation
 ============
-Install the package with `composer require {{name}}`.
+Install the package with `composer require scavix/wdf-minify`.
 
 Configuration
 =============
@@ -27,3 +27,7 @@ Uses
 
 * [CssMin (3.0.1)](http://code.google.com/p/cssmin/)
 * [jsmin-php (1.1.2)](https://github.com/rgrove/jsmin-php)
+
+Dependencies
+------------
+* [scavix/wdf-core (^1.0.2)](https://packagist.org/packages/scavix/wdf-core#v1.0.2)
