@@ -28,21 +28,21 @@
 namespace ScavixWDF\Admin;
 
 use ScavixWDF\Controls\Form\Form;
+use ScavixWDF\Reflection\Attributes\Boolean;
+use ScavixWDF\Reflection\NoMinifyAttribute;
 
 /**
  * SysAdmin module to manage minified JS/CSS.
- *
- * @attribute[NoMinify]
  */
+#[NoMinifyAttribute()]
 class MinifyAdmin extends SysAdmin
 {
 	/**
      * @internal Starts the minify process.
-     *
-	 * @attribute[RequestParam('submitter','bool',false)]
-	 * @attribute[RequestParam('skip_minify','bool',false)]
-	 * @attribute[RequestParam('random_nc','bool',false)]
 	 */
+    #[Boolean('submitter')]
+    #[Boolean('skip_minify')]
+    #[Boolean('random_nc')]
 	function Start($submitter,$skip_minify,$random_nc)
 	{
 		if( !$submitter )

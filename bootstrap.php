@@ -24,8 +24,8 @@
  */
 
 use ScavixWDF\Wdf;
-
 use ScavixWDF\Base\Template;
+use ScavixWDF\Reflection\NoMinifyAttribute;
 use ScavixWDF\Reflection\ResourceAttribute;
 use ScavixWDF\Reflection\WdfReflector;
 use ScavixWDF\WdfException;
@@ -96,7 +96,8 @@ function minify_forbidden($classname)
 	try
 	{
 		$ref = WdfReflector::GetInstance($classname);
-		return count($ref->GetClassAttributes('NoMinify')) > 0;
+		$cnt = count($ref->GetClassAttributes([NoMinifyAttribute::class]));
+		return $cnt > 0;
 	}
 	catch(Exception $ignored)
 	{
@@ -370,6 +371,8 @@ function minify_collect_files($paths,$kind)
 	foreach( $classes as $class )
 		$res = array_merge($res, minify_resolve_dependencies($class,$dependency_info,$res_file_storage));
 
+    $res = array_values(array_change_key_case(array_combine($res, $res),CASE_LOWER));
+
 	unset($dependency_info);
 	unset($res_file_storage);
 	return array_unique($res);
@@ -490,7 +493,7 @@ function minify_collect_from_file($kind,$f,$classname='')
 				$matches = [];
 				if( preg_match_all('/new\s+([^\(]+)\(/', $content, $by_new, PREG_SET_ORDER) )
 					$matches = array_merge($matches,$by_new);
-				if( preg_match_all('/\s+([^:\s\(\)]+)::Make\(/Ui', $content, $by_make, PREG_SET_ORDER) )
+				if( preg_match_all('/\s+([^\.:\s\(\)]+)::Make\(/Ui', $content, $by_make, PREG_SET_ORDER) )
 					$matches = array_merge($matches,$by_make);
 				if( count($matches)>0 )
 				{
