@@ -17,7 +17,7 @@ Configuration
 $GLOBALS['CONFIG']['minify'] =
 [
     'target_path' => 'path/to/folder',
-    'base_name => 'base_name_for_files',
+    'base_name' => 'base_name_for_files',
     'url' => '//base/url/where/targte_path/is/served',
 ];
 ```
