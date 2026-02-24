@@ -412,7 +412,7 @@ function minify_collect_from_file($kind,$f,$classname='')
 
 	if( !$f )
 		return;
-	$classname = $classname?:fq_class_name(array_first(explode('.',basename($f))) );
+	$classname = $classname?:fq_class_name(substr_until(basename($f),'.'));
 	if( isset($res_file_storage[$classname]) || minify_forbidden($classname) )
 		return;
 
