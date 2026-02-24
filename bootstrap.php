@@ -438,7 +438,7 @@ function minify_collect_from_file($kind,$f,$classname='')
         $keys = [];
         $uses = array_map(function($u)use(&$keys)
         {
-            $keys[] = array_last(explode("\\",$u));
+            $keys[] = substr_from($u, "\\");
             return "\\$u";
         }, $uses[1]);
         $uses_map = array_combine($keys, $uses);
@@ -509,7 +509,7 @@ function minify_collect_from_file($kind,$f,$classname='')
 				}
 				break;
 			case 'self':
-				$simplecls = array_last(explode("\\",$classname));
+				$simplecls = substr_from($classname, "\\");
 				if( resourceExists(strtolower("$simplecls.$kind")) )
 				{
 					$tmp = resFile(strtolower("$simplecls.$kind"));
