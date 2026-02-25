@@ -2327,7 +2327,7 @@ class CssMin
      */
     public static function setVerbose($to)
     {
-        self::$isVerbose = (boolean) $to;
+        self::$isVerbose = (bool) $to;
         return self::$isVerbose;
     }
     /**
