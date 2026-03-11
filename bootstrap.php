@@ -510,9 +510,8 @@ function minify_collect_from_file($kind,$f,$classname='')
 				break;
 			case 'self':
 				$simplecls = substr_from($classname, "\\");
-				if( resourceExists(strtolower("$simplecls.$kind")) )
+				if( $tmp = resFile(strtolower("$simplecls.$kind")) )
 				{
-					$tmp = resFile(strtolower("$simplecls.$kind"));
 					if( !in_array($tmp,$res_file_storage[$classname]) )
 						$res_file_storage[$classname][] = $tmp;
 				}
