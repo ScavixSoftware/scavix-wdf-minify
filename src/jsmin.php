@@ -232,13 +232,14 @@ class JSMin {
    * @uses get()
    * @uses peek()
    * @return string
+   * @suppress PHP0420
    */
   protected function min() {
     if (0 == strncmp($this->peek(), "\xef", 1)) {
         $this->get();
         $this->get();
         $this->get();
-    } 
+    }
 
     $this->a = "\n";
     $this->action(self::ACTION_DELETE_A_B);
