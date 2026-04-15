@@ -323,6 +323,7 @@ abstract class aCssFormatter
  * @copyright	2008 - 2011 Joe Scylla <joe.scylla@gmail.com>
  * @license		http://opensource.org/licenses/mit-license.php MIT License
  * @version		3.0.1
+ * @suppress PHP6508
  */
 abstract class aCssDeclarationToken extends aCssToken
 	{
@@ -1403,6 +1404,7 @@ class CssRemoveCommentsMinifierFilter extends aCssMinifierFilter
  * @copyright	2008 - 2011 Joe Scylla <joe.scylla@gmail.com>
  * @license		http://opensource.org/licenses/mit-license.php MIT License
  * @version		3.0.1
+ * @suppress PHP6508
  */
 class CssParser
 {
@@ -1957,6 +1959,7 @@ class CssNullToken extends aCssToken
  * @copyright	2008 - 2011 Joe Scylla <joe.scylla@gmail.com>
  * @license		http://opensource.org/licenses/mit-license.php MIT License
  * @version		3.0.1
+ * @suppress PHP6508
  */
 class CssMinifier
 {
@@ -4442,6 +4445,7 @@ class CssAtMediaEndToken extends aCssAtBlockEndToken
  * @copyright	2008 - 2011 Joe Scylla <joe.scylla@gmail.com>
  * @license		http://opensource.org/licenses/mit-license.php MIT License
  * @version		3.0.1
+ * @suppress PHP6508
  */
 class CssAtKeyframesStartToken extends aCssAtBlockStartToken
 {
